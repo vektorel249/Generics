@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Generics.FundamentalTypes", "Vektorel.Generics.FundamentalTypes\Vektorel.Generics.FundamentalTypes.csproj", "{6BDB4AAD-038D-43E3-AB95-C0076AA7B715}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Generics.Calculator", "Vektorel.Generics.Calculator\Vektorel.Generics.Calculator.csproj", "{31331C3E-529F-44F7-A752-1A86A2E0EB8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Generics.PokemonGame", "Vektorel.Generics.PokemonGame\Vektorel.Generics.PokemonGame.csproj", "{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6BDB4AAD-038D-43E3-AB95-C0076AA7B715}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BDB4AAD-038D-43E3-AB95-C0076AA7B715}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BDB4AAD-038D-43E3-AB95-C0076AA7B715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31331C3E-529F-44F7-A752-1A86A2E0EB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31331C3E-529F-44F7-A752-1A86A2E0EB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31331C3E-529F-44F7-A752-1A86A2E0EB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31331C3E-529F-44F7-A752-1A86A2E0EB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
