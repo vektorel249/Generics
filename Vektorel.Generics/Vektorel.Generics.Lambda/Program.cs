@@ -88,7 +88,7 @@ namespace Vektorel.Generics.Lambda
             -------> Func ifadesi return type function delagate demek. son generic parametre return type, 
                      öncekiler ise sırasıyla method in parametereleri
 
-            public bool Find(string name)
+            public bool FindDataByName(string name)
             {
                 bazı kodlar
                 name ile bir şeyler

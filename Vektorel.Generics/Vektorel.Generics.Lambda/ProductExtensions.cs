@@ -6,6 +6,7 @@ namespace Vektorel.Generics.Lambda
     // kasıtlı olrak "Static" yapıldı
     static class ProductExtensions
     {
+        //this kullanımına dikkat!!!!!
         public static void Print(this List<Product> products)
         {
             foreach (var product in products)
