@@ -1,7 +1,7 @@
 ﻿namespace Vektorel.Generics.Lambda.Dtos;
 
-internal class BasicProductDto
+internal class ProductsByCategoryDto
 {
     public string Name { get; set; }
-    public decimal Price { get; set; }
+    public string Products { get; set; }
 }

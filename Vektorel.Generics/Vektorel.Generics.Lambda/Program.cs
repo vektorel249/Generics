@@ -1,4 +1,5 @@
-﻿using Vektorel.Generics.Lambda.Models;
+﻿using Vektorel.Generics.Lambda.Dtos;
+using Vektorel.Generics.Lambda.Models;
 using Vektorel.Generics.Lambda.Repositories;
 
 namespace Vektorel.Generics.Lambda
@@ -22,6 +23,13 @@ namespace Vektorel.Generics.Lambda
             Console.WriteLine("  3 - İçecekler");
             Console.WriteLine("  4 - Stokta Olmayanlar (Ada Göre Sıralı)");
             Console.WriteLine("  5 - Kritik Seviyede Stokta Olanlar");
+            Console.WriteLine("  6 - A ile Başlayan Ürünlerin Adı ve Fiyatı");
+            Console.WriteLine("  7 - Kategoriye Göre Ürün Sayısı");
+            Console.WriteLine("  8 - Kategoriye Göre Ürün İsimleri");
+            Console.WriteLine("  9 - Fiyatı 50 Üstü olan ve Kıyafet Olanlar");
+            Console.WriteLine(" 10 - Mutfak kategorisindeki ürünlerin tedarikçisine göre ayrıştırılması");
+            Console.WriteLine(" 11 - Fiyatı 50 üstü olan ürün sayısı");
+            Console.WriteLine(" 12 - İçecekleri Stoktaki Değerlere Göre Fiyat Toplamı");
 
             var code = Console.ReadLine();
             switch (code)
@@ -43,6 +51,24 @@ namespace Vektorel.Generics.Lambda
                     break;
                 case "6":
                     JustNameAndPriceThatStartsWithA(repository);
+                    break;
+                case "7":
+                    CountByCategory(repository);
+                    break;
+                case "8":
+                    ProductsByCategory(repository);
+                    break;
+                case "9":
+                    ClothesThatAreMoreThan50Liras(repository);
+                    break;
+                case "10":
+                    KitchenSuffBySupplier(repository);
+                    break;
+                case "11":
+                    CountByPriceThatMoreThan50Liras(repository);
+                    break;
+                case "12":
+                    TotalPriceForBeverages(repository);
                     break;
                 default:
                     Console.WriteLine("Yanlış Seçim");
@@ -87,9 +113,94 @@ namespace Vektorel.Generics.Lambda
             #endregion
         }
 
+        private static void TotalPriceForBeverages(ProductRepository repository)
+        {
+            //var total = repository.Products.Where(p => p.Category == "Beverages")
+            //                               .Sum(p => p.Stock * p.Price);
+            var total = repository.Products.Where(p => p.Category == "Beverages")
+                                           .Sum(p => Math.Round(p.Stock * p.Price, 2, MidpointRounding.AwayFromZero));
+            Console.WriteLine($"Depoda toplam {total} liralık içecek mevcut");
+        }
+
+        private static void CountByPriceThatMoreThan50Liras(ProductRepository repository)
+        {
+            //var count = repository.Products.Where(p => p.Price > 50).Count();
+            var count = repository.Products.Count(p => p.Price > 50);
+            Console.WriteLine($"Toplam {count} adet ürün 50 TL üstünde");
+        }
+
+        private static void KitchenSuffBySupplier(ProductRepository repository)
+        {
+            repository.Products.Where(p => p.Category == "Kitchen")
+                               .GroupBy(g => g.Supplier)
+                               .Select(s => new ProductsBySupplierDto
+                               {
+                                   Name = s.Key,
+                                   Products = s.Select(p => new SupplierProductDto
+                                   {
+                                       Name = p.Name,
+                                       Price = p.Price,
+                                       Stock = p.Stock,
+                                   }).ToList()
+                               })
+                               .ToList()
+                               .Print();
+        }
+
+        private static void ClothesThatAreMoreThan50Liras(ProductRepository repository)
+        {
+            repository.Products.Where(p => p.Price > 50 && p.Category == "Clothes")
+                               .ToList()
+                               .Print();
+        }
+
+        private static void ProductsByCategory(ProductRepository repository)
+        {
+            repository.Products.GroupBy(p => p.Category)
+                               .Select(p => new ProductsByCategoryDto
+                               {
+                                   Name = p.Key,
+                                   Products = string.Join(", ", p.Select(s => s.Name))
+                               })
+                               .ToList()
+                               .Print();
+        }
+
+        private static void CountByCategory(ProductRepository repository)
+        {
+            repository.Products.GroupBy(p => p.Category)
+                               .Select(p => new CountByCategoryDto
+                               {
+                                   Category = p.Key,
+                                   Count = p.Count()
+                               })
+                               .ToList()
+                               .Print();
+        }
+
         private static void JustNameAndPriceThatStartsWithA(ProductRepository repository)
         {
-            var products = repository.Products.Where(p => p.Name.ToLower().StartsWith("a"));
+            var products = repository.Products.Where(p => p.Name.ToLower().StartsWith("a"))
+                                              .Select(s => new BasicProductDto
+                                              {
+                                                  Name = s.Name,
+                                                  Price = s.Price,
+                                              })
+                                              .OrderBy(o => o.Name)
+                                              .ToList();
+
+            products.Print();
+
+            /*
+             public BasicProductDto Map(Product p)
+             {
+                 return new BasicProductDto 
+                 {
+                     Name = p.Name,
+                     Price = p.Price * 1.05
+                 };
+             }
+             */
         }
 
         private static void CriticalStock(ProductRepository repository)
