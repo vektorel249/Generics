@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Generics.FundamentalTypes", "Vektorel.Generics.FundamentalTypes\Vektorel.Generics.FundamentalTypes.csproj", "{6BDB4AAD-038D-43E3-AB95-C0076AA7B715}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Generics.FundamentalTypes", "Vektorel.Generics.FundamentalTypes\Vektorel.Generics.FundamentalTypes.csproj", "{6BDB4AAD-038D-43E3-AB95-C0076AA7B715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Generics.Calculator", "Vektorel.Generics.Calculator\Vektorel.Generics.Calculator.csproj", "{31331C3E-529F-44F7-A752-1A86A2E0EB8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Generics.Calculator", "Vektorel.Generics.Calculator\Vektorel.Generics.Calculator.csproj", "{31331C3E-529F-44F7-A752-1A86A2E0EB8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Generics.PokemonGame", "Vektorel.Generics.PokemonGame\Vektorel.Generics.PokemonGame.csproj", "{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vektorel.Generics.PokemonGame", "Vektorel.Generics.PokemonGame\Vektorel.Generics.PokemonGame.csproj", "{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vektorel.Generics.Lambda", "Vektorel.Generics.Lambda\Vektorel.Generics.Lambda.csproj", "{91D38432-CAAB-4157-A1D7-430F4C5DD3EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB61D8D5-6F9B-4435-8FB7-D3024E1C9245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91D38432-CAAB-4157-A1D7-430F4C5DD3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91D38432-CAAB-4157-A1D7-430F4C5DD3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91D38432-CAAB-4157-A1D7-430F4C5DD3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91D38432-CAAB-4157-A1D7-430F4C5DD3EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
