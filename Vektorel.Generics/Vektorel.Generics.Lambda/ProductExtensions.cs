@@ -15,6 +15,11 @@ namespace Vektorel.Generics.Lambda
             }
         }
 
+        public static void Print(this Product product)
+        {
+            Console.WriteLine("{0, 3} | {1, -31} | {2, -6} | {3, -5} | {4, -34} | {5, -15}", product.Id, product.Name, product.Price, product.Stock, product.Supplier, product.Category);
+        }
+
         public static void Print(this List<BasicProductDto> products)
         {
             foreach (var product in products)
@@ -22,7 +27,7 @@ namespace Vektorel.Generics.Lambda
                 Console.WriteLine("{0, -31} | {1, -6}", product.Name, product.Price);
             }
         }
-        
+
         public static void Print(this List<CountByCategoryDto> categories)
         {
             foreach (var category in categories)
@@ -30,7 +35,7 @@ namespace Vektorel.Generics.Lambda
                 Console.WriteLine("{0, -15} | {1, -6}", category.Category, category.Count);
             }
         }
-        
+
         public static void Print(this List<ProductsByCategoryDto> categories)
         {
             foreach (var category in categories)
@@ -39,6 +44,14 @@ namespace Vektorel.Generics.Lambda
             }
         }
         
+        public static void Print(this List<IncreasePriceProductDto> products)
+        {
+            foreach (var product in products)
+            {
+                Console.WriteLine("{0, -31} | {1, -6} | {2, -6}", product.Name, product.OldPrice, product.NewPrice);
+            }
+        }
+
         public static void Print(this List<ProductsBySupplierDto> suppliers)
         {
             foreach (var supplier in suppliers)
@@ -48,7 +61,7 @@ namespace Vektorel.Generics.Lambda
                 {
                     Console.WriteLine("    {0, -31} | {1, -6} | {2}", product.Name, product.Price, product.Stock);
                 }
-                
+
             }
         }
     }

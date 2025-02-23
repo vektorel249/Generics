@@ -30,6 +30,12 @@ namespace Vektorel.Generics.Lambda
             Console.WriteLine(" 10 - Mutfak kategorisindeki ürünlerin tedarikçisine göre ayrıştırılması");
             Console.WriteLine(" 11 - Fiyatı 50 üstü olan ürün sayısı");
             Console.WriteLine(" 12 - İçecekleri Stoktaki Değerlere Göre Fiyat Toplamı");
+            Console.WriteLine(" 13 - En pahalı Ürün");
+            Console.WriteLine(" 14 - Fiyatlara %8 Zam Yansıtılması ve Eski Fiyat Yeni Fiyat Gösterimi");
+            Console.WriteLine(" 15 - %8 Zam Yansıtılması Sonucunda Elde Edilecek Toplam Gelir");
+            Console.WriteLine(" 16 - Stokta En Çok Bulunan 5 Ürün");
+            Console.WriteLine(" 17 - 15 Adet Altı Ürünleri 50'ye Yükseltme Halinde Gereken Yatırım (Tablo)");
+            Console.WriteLine(" 18 - Her Kategorideki En Pahalı Ürün");
 
             var code = Console.ReadLine();
             switch (code)
@@ -69,6 +75,15 @@ namespace Vektorel.Generics.Lambda
                     break;
                 case "12":
                     TotalPriceForBeverages(repository);
+                    break;
+                case "13":
+                    MostExpensiveProduct(repository);
+                    break;
+                case "14":
+                    IncreasePriceBy8Percentage(repository);
+                    break;
+                case "16":
+                    TopFiveProductsInStock(repository);
                     break;
                 default:
                     Console.WriteLine("Yanlış Seçim");
@@ -111,6 +126,34 @@ namespace Vektorel.Generics.Lambda
                                select p;
              */
             #endregion
+        }
+
+        private static void IncreasePriceBy8Percentage(ProductRepository repository)
+        {
+            repository.Products.Select(s => new IncreasePriceProductDto
+                                {
+                                    Name = s.Name,
+                                    OldPrice = s.Price,
+                                    NewPrice = Math.Round(s.Price * 1.08M, 2),
+                                })
+                                .ToList()
+                                .Print();
+        }
+
+        private static void MostExpensiveProduct(ProductRepository repository)
+        {
+            repository.Products.OrderByDescending(o => o.Price)
+                               .Take(1)
+                               .First()
+                               .Print();
+        }
+
+        private static void TopFiveProductsInStock(ProductRepository repository)
+        {
+            repository.Products.OrderByDescending(o => o.Stock)
+                               .Take(5)
+                               .ToList()
+                               .Print();
         }
 
         private static void TotalPriceForBeverages(ProductRepository repository)
